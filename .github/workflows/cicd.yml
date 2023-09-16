@@ -72,4 +72,4 @@ jobs:
           script: |
             docker ps
             docker rm -f mks-bot
-            docker run -d --name=mks-bot -e TG_BOT_TOKEN=${TG_BOT_TOKEN} ${{ env.registry_url }}/${{ env.image_repo }}:${{ needs.build.outputs.version }}
+            docker run -d --name=mks-bot -e TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }} ${{ env.registry_url }}/${{ env.image_repo }}:${{ needs.build.outputs.version }}
