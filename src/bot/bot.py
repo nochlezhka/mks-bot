@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 
-
-import telebot
 import sys
 import logging
 import time
+import telebot
 
 from utils import config as cfg_utils
 from mks import check
 
-from telebot.types import ReplyKeyboardRemove
 
 sys.path.append('../resources/')
 config = cfg_utils.load("../resources/config.yml")
@@ -18,7 +16,7 @@ bot = telebot.TeleBot(config["telegram"]["token"])
 telebot.logger.setLevel(logging.INFO)
 
 text_messages = {
-    'start': u'{name}, привет! 🎉 Выбери необходимое действие в меню ✨',
+    'start': '{name}, привет! 🎉 Выбери необходимое действие в меню ✨',
 
     'help': '/start - начальный экран \n/status - показать статус \n/help - показать подсказку',
     'permission_error': 'Сорри, мы не знаем, кто ты. Напиши @kvendingoldo чтобы исправить доступ к боту.',
@@ -88,7 +86,7 @@ def handler_help(message):
             bot.send_message(
                 message.from_user.id,
                 text_messages['help'],
-                reply_markup=ReplyKeyboardRemove()
+                reply_markup=telebot.types.ReplyKeyboardRemove()
             )
         except Exception as ex:
             logging.error(ex)
@@ -121,7 +119,7 @@ def handler_text(message):
                 bot.send_message(
                     message.from_user.id,
                     text_messages['help'],
-                    reply_markup=ReplyKeyboardRemove()
+                    reply_markup=telebot.types.ReplyKeyboardRemove()
                 )
             except Exception as ex:
                 logging.error(ex)

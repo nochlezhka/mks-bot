@@ -10,7 +10,10 @@ def check_status(clients):
 
     for client in clients:
         try:
-            response = requests.get(f"{client['url']}/{client['endpoint']}")
+            response = requests.get(
+                url=f"{client['url']}/{client['endpoint']}",
+                timeout=60
+            )
             response.raise_for_status()
             version = response.text
             status = "✅"

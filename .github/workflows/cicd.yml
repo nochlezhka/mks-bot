@@ -58,10 +58,6 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.0
         with:
