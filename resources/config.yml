@@ -22,17 +22,17 @@ clients:
 
   - name: БФ "Ковчег"
     type: вк
-    url: "todo"
+    url: https://mks.ossne.ru
     endpoint: app/version
 
   - name: БФ "Люблю и благодарю"
     type: вк
-    url: "todo"
+    url: "unknown"
     endpoint: app/version
 
   - name: Рука помощи43
     type: вк
-    url: "todo"
+    url: https://mks.helpinghand43.ru
     endpoint: app/version
 
   - name: новое начало
@@ -42,7 +42,7 @@ clients:
 
   - name: АНО Эпоха Водолея
     type: вк
-    url: "todo"
+    url: https://mks.iznanka.info
     endpoint: app/version
 
   - name: перспективы
