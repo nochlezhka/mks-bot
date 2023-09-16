@@ -1,19 +1,56 @@
 log:
   dir: ""
 
+allowed_users:
+  - kvendingoldo
+  - nikolai_mishin
+  - yakovenko_sv
+  - pangurbano
+  - TurangaLipina
+  - amenshchikov
+  - eramonstera
+  - bulgkate
+  - chelseadagger
+  - satamas
+  - mariia_lobanova
 
 clients:
   - name: ночлежка
     type: вк
     url: https://mks.homeless.ru
     endpoint: app/version
-  - name: перспективы
-    type: яндекс
-    url: https://mks.perspektivy.ru
+
+  - name: БФ "Ковчег"
+    type: вк
+    url: "todo"
     endpoint: app/version
+
+  - name: БФ "Люблю и благодарю"
+    type: вк
+    url: "todo"
+    endpoint: app/version
+
+  - name: Рука помощи43
+    type: вк
+    url: "todo"
+    endpoint: app/version
+
   - name: новое начало
     type: вк
     url: https://xn--j1adq.xn--80aaem6ahcfbf0h.xn--p1ai
     endpoint: app/version
 
-# https://mks.ossne.ru/login
+  - name: АНО Эпоха Водолея
+    type: вк
+    url: "todo"
+    endpoint: app/version
+
+  - name: перспективы
+    type: яндекс
+    url: https://mks.perspektivy.ru
+    endpoint: app/version
+
+  - name: маяк
+    type: яндекс
+    url: todo
+    endpoint: app/version
