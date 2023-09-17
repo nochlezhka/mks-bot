@@ -19,7 +19,7 @@ def check_status(clients):
             ssl_status = "✅"
         except requests.exceptions.SSLError as ex:
             logging.error(f"SSL certificate error: {ex}")
-            status = "❌"
+            status = "✅"
             ssl_status = "❌"
         except Exception as ex:
             logging.error(ex)
