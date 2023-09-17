@@ -13,6 +13,7 @@ allowed_users:
   - chelseadagger
   - satamas
   - mariia_lobanova
+  - dkramorov
 
 clients:
   - name: ночлежка
