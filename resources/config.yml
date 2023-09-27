@@ -16,7 +16,7 @@ allowed_users:
   - dkramorov
 
 clients:
-  - name: ночлежка
+  - name: ночлежка тест
     type: вк
     url: https://mks.homeless.ru
     endpoint: app/version
@@ -54,4 +54,9 @@ clients:
   - name: маяк
     type: яндекс
     url: todo
+    endpoint: app/version
+
+  - name: Милосердие и забота
+    type: вк
+    url: https://xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
     endpoint: app/version
