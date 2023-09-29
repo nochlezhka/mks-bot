@@ -17,7 +17,7 @@ RUN mkdir -p ${HOME}/bot
 COPY requirements.txt ${HOME}/bot
 
 RUN apk update \
- && apk add --virtual build-deps gcc g++ python3-dev musl-dev \
+ && apk add --virtual build-deps gcc g++ python3-dev musl-dev chromium-chromedriver \
  && apk add --no-cache mariadb-dev \
  && pip3 install --upgrade pip \
  && pip3 install --no-cache-dir -r ${HOME}/bot/requirements.txt \
