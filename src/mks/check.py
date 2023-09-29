@@ -34,12 +34,14 @@ def check_status(clients):
             )
             response.raise_for_status()
             version = response.text
+
+            version = (version[:8] + '..') if len(version) > 8 else version
         except Exception as ex:
             logging.error(ex)
             version = "❓"
 
         table.add_row([
-            client['name'], version, status, ssl_status, client['type']
+            f"[{client['name']}]({client['url']})", version, status, ssl_status, client['type']
         ])
 
     print(table)
