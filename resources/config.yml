@@ -53,7 +53,7 @@ clients:
 
   - name: маяк
     type: яндекс
-    url: "-"
+    url: "none"
     endpoint: app/version
 
   - name: Милосердие и забота
