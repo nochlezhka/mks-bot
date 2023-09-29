@@ -22,7 +22,7 @@ text_messages = {
     'help': '/start - начальный экран \n/status - показать статус \n/help - показать подсказку',
     'permission_error': 'Сорри, мы не знаем, кто ты. Напиши @kvendingoldo чтобы исправить доступ к боту.',
 
-    'processing': 'обрабатываю ваш запрос, статус будет через пару секунд',
+    'processing': 'обрабатываю запрос, статус будет через несколько секунд',
 
     'wrong_msg': 'Похоже что-то пошло не так. Пожалуйста, воспользуйся подсказкой через /help или начните заного через /start'
 }
@@ -117,19 +117,11 @@ def handler_text(message):
                     text_messages['processing'],
                     reply_markup=telebot.types.ReplyKeyboardRemove()
                 )
-                table = check.get_short_status(config["clients"], pretty_table=USE_PRETTY_TABLE)
-
-                if USE_PRETTY_TABLE:
-                    bot.send_message(
-                        message.from_user.id,
-                        f"```{table}```",
-                        parse_mode='MarkdownV2'
-                    )
-                else:
-                    bot.send_photo(
-                        message.from_user.id,
-                        photo=tti.convert(table).getvalue()
-                    )
+                header, data = check.get_short_status(config["clients"])
+                bot.send_photo(
+                    message.from_user.id,
+                    photo=tti.convert(header, data)
+                )
             except Exception as ex:
                 logging.error(ex)
 
@@ -141,18 +133,11 @@ def handler_text(message):
                     reply_markup=telebot.types.ReplyKeyboardRemove()
                 )
 
-                table = check.get_long_status(config["clients"], pretty_table=USE_PRETTY_TABLE)
-                if USE_PRETTY_TABLE:
-                    bot.send_message(
-                        message.from_user.id,
-                        f"```{table}```",
-                        parse_mode='MarkdownV2'
-                    )
-                else:
-                    bot.send_photo(
-                        message.from_user.id,
-                        photo=tti.convert(table).getvalue()
-                    )
+                header, data = check.get_long_status(config["clients"])
+                bot.send_photo(
+                    message.from_user.id,
+                    photo=tti.convert(header, data)
+                )
             except Exception as ex:
                 logging.error(ex)
 

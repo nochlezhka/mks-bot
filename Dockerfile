@@ -17,11 +17,10 @@ RUN mkdir -p ${HOME}/bot
 COPY requirements.txt ${HOME}/bot
 
 RUN apk update \
- && apk add --virtual build-deps gcc g++ python3-dev musl-dev chromium-chromedriver \
- && apk add --no-cache mariadb-dev \
- && pip3 install --upgrade pip \
- && pip3 install --no-cache-dir -r ${HOME}/bot/requirements.txt \
- && apk del build-deps gcc g++
+ && apk add --virtual python3-dev musl-dev libpng-dev
+
+RUN pip3 install --upgrade pip \
+ && pip3 install --no-cache-dir -r ${HOME}/bot/requirements.txt
 
 USER tbot
 COPY ./src ${HOME}/bot/src
