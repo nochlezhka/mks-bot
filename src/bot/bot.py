@@ -7,7 +7,7 @@ import telebot
 
 from utils import config as cfg_utils
 from mks import check
-
+from utils import table_to_img as tti
 
 sys.path.append('../resources/')
 config = cfg_utils.load("../resources/config.yml")
@@ -17,12 +17,17 @@ telebot.logger.setLevel(logging.INFO)
 
 text_messages = {
     'start': '{name}, привет! 🎉 Выбери необходимое действие в меню ✨',
+    'status': '{name}, выбери тип статуса',
 
     'help': '/start - начальный экран \n/status - показать статус \n/help - показать подсказку',
     'permission_error': 'Сорри, мы не знаем, кто ты. Напиши @kvendingoldo чтобы исправить доступ к боту.',
 
+    'processing': 'обрабатываю ваш запрос, статус будет через пару секунд',
+
     'wrong_msg': 'Похоже что-то пошло не так. Пожалуйста, воспользуйся подсказкой через /help или начните заного через /start'
 }
+
+USE_PRETTY_TABLE = False
 
 
 @bot.message_handler(commands=['start'])
@@ -37,7 +42,7 @@ def handler_start(message):
             logging.error(ex)
     else:
         markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.row('показать статус', 'помощь')
+        markup.row('показать короткий статус', 'показать длинный статус', 'помощь')
 
         try:
             msg = bot.send_message(
@@ -60,12 +65,14 @@ def handler_status(message):
         except Exception as ex:
             logging.error(ex)
     else:
+        markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.row('показать короткий статус', 'показать длинный статус')
+
         try:
-            table = check.check_status(config["clients"])
             msg = bot.send_message(
                 message.from_user.id,
-                f"```{table}```",
-                parse_mode='MarkdownV2'
+                text_messages['status'].format(name=message.from_user.first_name),
+                reply_markup=markup
             )
         except Exception as ex:
             logging.error(ex)
@@ -103,14 +110,49 @@ def handler_text(message):
         except Exception as ex:
             logging.error(ex)
     else:
-        if message.text == 'показать статус':
+        if message.text == 'показать короткий статус':
             try:
-                table = check.check_status(config["clients"])
-                msg = bot.send_message(
+                bot.send_message(
                     message.from_user.id,
-                    f"```{table}```",
-                    parse_mode='MarkdownV2'
+                    text_messages['processing'],
+                    reply_markup=telebot.types.ReplyKeyboardRemove()
                 )
+                table = check.get_short_status(config["clients"], pretty_table=USE_PRETTY_TABLE)
+
+                if USE_PRETTY_TABLE:
+                    bot.send_message(
+                        message.from_user.id,
+                        f"```{table}```",
+                        parse_mode='MarkdownV2'
+                    )
+                else:
+                    bot.send_photo(
+                        message.from_user.id,
+                        photo=tti.convert(table).getvalue()
+                    )
+            except Exception as ex:
+                logging.error(ex)
+
+        if message.text == 'показать длинный статус':
+            try:
+                bot.send_message(
+                    message.from_user.id,
+                    text_messages['processing'],
+                    reply_markup=telebot.types.ReplyKeyboardRemove()
+                )
+
+                table = check.get_long_status(config["clients"], pretty_table=USE_PRETTY_TABLE)
+                if USE_PRETTY_TABLE:
+                    bot.send_message(
+                        message.from_user.id,
+                        f"```{table}```",
+                        parse_mode='MarkdownV2'
+                    )
+                else:
+                    bot.send_photo(
+                        message.from_user.id,
+                        photo=tti.convert(table).getvalue()
+                    )
             except Exception as ex:
                 logging.error(ex)
 

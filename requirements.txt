@@ -3,3 +3,6 @@ pytelegrambotapi==4.9.0
 pyyaml==6.0.1
 loguru==0.6.0
 requests==2.31.0
+idna==3.4
+dataframe-image==0.2.2
+pandas==2.1.1

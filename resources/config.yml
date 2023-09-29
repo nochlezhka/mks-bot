@@ -18,12 +18,12 @@ allowed_users:
 clients:
   - name: ночлежка тест
     type: вк
-    url: https://mks.homeless.ru
+    url: mks.homeless.ru
     endpoint: app/version
 
   - name: БФ "Ковчег"
     type: вк
-    url: https://mks.ossne.ru
+    url: mks.ossne.ru
     endpoint: app/version
 
   - name: БФ "Люблю и благодарю"
@@ -33,30 +33,30 @@ clients:
 
   - name: Рука помощи43
     type: вк
-    url: https://mks.helpinghand43.ru
+    url: mks.helpinghand43.ru
     endpoint: app/version
 
   - name: новое начало
     type: вк
-    url: https://xn--j1adq.xn--80aaem6ahcfbf0h.xn--p1ai
+    url: xn--j1adq.xn--80aaem6ahcfbf0h.xn--p1ai
     endpoint: app/version
 
   - name: АНО Эпоха Водолея
     type: вк
-    url: https://mks.iznanka.info
+    url: mks.iznanka.info
     endpoint: app/version
 
   - name: перспективы
     type: яндекс
-    url: https://mks.perspektivy.ru
+    url: mks.perspektivy.ru
     endpoint: app/version
 
   - name: маяк
     type: яндекс
-    url: todo
+    url: "-"
     endpoint: app/version
 
   - name: Милосердие и забота
     type: вк
-    url: https://xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
+    url: xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
     endpoint: app/version
