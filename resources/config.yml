@@ -53,7 +53,7 @@ clients:
 
   - name: маяк
     type: яндекс
-    url: "none"
+    url: mks.stophomelessness.ru
     endpoint: app/version
 
   - name: Милосердие и забота
