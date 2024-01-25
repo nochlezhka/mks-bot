@@ -61,3 +61,8 @@ clients:
     type: вк
     url: xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
     endpoint: app/version
+
+  - name: ТЫ ДОМА
+    type: вк
+    url: mks.td-samara.ru
+    endpoint: app/version
