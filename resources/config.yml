@@ -14,6 +14,7 @@ allowed_users:
   - satamas
   - mariia_lobanova
   - dkramorov
+  - Roman_Verkhovkii
 
 clients:
   - name: ночлежка тест
@@ -59,4 +60,9 @@ clients:
   - name: Милосердие и забота
     type: вк
     url: xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
+    endpoint: app/version
+
+  - name: ТЫ ДОМА
+    type: вк
+    url: mks.td-samara.ru
     endpoint: app/version
