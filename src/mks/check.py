@@ -21,9 +21,11 @@ def get_short_status(clients):
             logging.error(ex)
             status = "fail"
 
+        endpoint = client['endpoint'] if client.get('endpoint') else "app/version"
+
         try:
             response = requests.get(
-                url=f"https://{client['url']}/{client['endpoint']}",
+                url=f"https://{client['url']}/{endpoint}",
                 timeout=60,
                 verify=False
             )
@@ -62,9 +64,11 @@ def get_long_status(clients):
             status = "fail"
             ssl_status = "fail"
 
+        endpoint = client['endpoint'] if client.get('endpoint') else "app/version"
+
         try:
             response = requests.get(
-                url=f"https://{client['url']}/{client['endpoint']}",
+                url=f"https://{client['url']}/{endpoint}",
                 timeout=60,
                 verify=False
             )

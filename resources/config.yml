@@ -20,54 +20,43 @@ clients:
   - name: ночлежка тест
     type: вк
     url: mks.homeless.ru
-    endpoint: app/version
 
   - name: БФ "Ковчег"
     type: вк
     url: mks.ossne.ru
-    endpoint: app/version
 
   - name: БФ "Люблю и благодарю"
     type: вк
     url: mks.libfund.ru
-    endpoint: app/version
 
   - name: Рука помощи43
     type: вк
     url: mks.helpinghand43.ru
-    endpoint: app/version
 
   - name: новое начало
     type: вк
     url: xn--j1adq.xn--80aaem6ahcfbf0h.xn--p1ai
-    endpoint: app/version
 
   - name: АНО Эпоха Водолея
     type: вк
     url: mks.iznanka.info
-    endpoint: app/version
 
   - name: перспективы
     type: яндекс
     url: mks.perspektivy.ru
-    endpoint: app/version
 
   - name: маяк
     type: яндекс
     url: mks.stophomelessness.ru
-    endpoint: app/version
 
   - name: Милосердие и забота
     type: вк
     url: xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
-    endpoint: app/version
 
   - name: ТЫ ДОМА
     type: вк
     url: mks.td-samara.ru
-    endpoint: app/version
 
   - name: Жить вместе
     type: вк
     url: mks.zhitvmeste.ru
-    endpoint: app/version
