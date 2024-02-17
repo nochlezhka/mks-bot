@@ -13,7 +13,7 @@ def get_short_status(clients):
         try:
             response = requests.get(
                 url=f"https://{client['url']}/",
-                timeout=60
+                timeout=10
             )
             response.raise_for_status()
             status = "ok"
@@ -24,7 +24,7 @@ def get_short_status(clients):
         try:
             response = requests.get(
                 url=f"https://{client['url']}/{client['endpoint']}",
-                timeout=60,
+                timeout=10,
                 verify=False
             )
             response.raise_for_status()
@@ -48,7 +48,7 @@ def get_long_status(clients):
         try:
             response = requests.get(
                 url=f"https://{client['url']}/",
-                timeout=60
+                timeout=10
             )
             response.raise_for_status()
             status = "ok"
@@ -65,7 +65,7 @@ def get_long_status(clients):
         try:
             response = requests.get(
                 url=f"https://{client['url']}/{client['endpoint']}",
-                timeout=60,
+                timeout=10,
                 verify=False
             )
             response.raise_for_status()
