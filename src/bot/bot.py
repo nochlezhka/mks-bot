@@ -117,7 +117,7 @@ def handler_text(message):
                     text_messages['processing'],
                     reply_markup=telebot.types.ReplyKeyboardRemove()
                 )
-                header, data = check.get_short_status(config["clients"])
+                header, data = check.get_short_status(config["clients"], config["default_version_endpoint"])
                 bot.send_photo(
                     message.from_user.id,
                     photo=tti.convert(header, data)
@@ -133,7 +133,7 @@ def handler_text(message):
                     reply_markup=telebot.types.ReplyKeyboardRemove()
                 )
 
-                header, data = check.get_long_status(config["clients"])
+                header, data = check.get_long_status(config["clients"], config["default_version_endpoint"])
                 bot.send_photo(
                     message.from_user.id,
                     photo=tti.convert(header, data)
