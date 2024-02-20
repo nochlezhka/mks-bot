@@ -5,7 +5,7 @@ import requests
 import idna
 
 
-def get_short_status(clients):
+def get_short_status(clients, default_version_endpoint):
     header = ['клиент', 'версия', 'статус']
     data = []
 
@@ -21,7 +21,7 @@ def get_short_status(clients):
             logging.error(ex)
             status = "fail"
 
-        endpoint = client['endpoint'] if client.get('endpoint') else "app/version"
+        endpoint = client['endpoint'] if client.get('endpoint') else default_version_endpoint
 
         try:
             response = requests.get(
@@ -42,7 +42,7 @@ def get_short_status(clients):
     return header, data
 
 
-def get_long_status(clients):
+def get_long_status(clients, default_version_endpoint):
     header = ['клиент', 'версия', 'статус', 'TLS', 'облако', 'URL']
     data = []
 
@@ -64,7 +64,7 @@ def get_long_status(clients):
             status = "fail"
             ssl_status = "fail"
 
-        endpoint = client['endpoint'] if client.get('endpoint') else "app/version"
+        endpoint = client['endpoint'] if client.get('endpoint') else default_version_endpoint
 
         try:
             response = requests.get(
