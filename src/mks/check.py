@@ -25,7 +25,6 @@ def get_short_status(clients, default_version_endpoint):
 
         try:
             response = requests.get(
-        feature-client-endpoint
                 url=f"https://{client['url']}/{endpoint}",
                 timeout=10,
                 verify=False
@@ -69,7 +68,6 @@ def get_long_status(clients, default_version_endpoint):
 
         try:
             response = requests.get(
-        feature-client-endpoint
                 url=f"https://{client['url']}/{endpoint}",
                 timeout=10,
                 verify=False
