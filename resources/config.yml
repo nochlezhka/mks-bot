@@ -20,27 +20,27 @@ allowed_users:
 
 clients:
   - name: ночлежка тест
-    type: вк
+    type: вк mcs0712976052
     url: mks.homeless.ru
 
   - name: БФ "Ковчег"
-    type: вк
+    type: вк mcs8866994743
     url: mks.ossne.ru
 
   - name: БФ "Люблю и благодарю"
-    type: вк
+    type: вк mcs4786614812
     url: mks.libfund.ru
 
   - name: Рука помощи43
-    type: вк
+    type: вк mcs0766305908
     url: mks.helpinghand43.ru
 
   - name: новое начало
-    type: вк
+    type: вк mcs0446143667
     url: xn--j1adq.xn--80aaem6ahcfbf0h.xn--p1ai
 
   - name: АНО Эпоха Водолея
-    type: вк
+    type: вк mcs7972760649
     url: mks.iznanka.info
 
   - name: перспективы
@@ -52,13 +52,13 @@ clients:
     url: mks.stophomelessness.ru
 
   - name: Милосердие и забота
-    type: вк
+    type: вк mcs0741818200
     url: xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
 
   - name: ТЫ ДОМА
-    type: вк
+    type: вк mcs7451084416
     url: mks.td-samara.ru
 
   - name: Жить вместе
-    type: вк
+    type: вк mcs3416615957
     url: mks.zhitvmeste.ru
