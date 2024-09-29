@@ -51,10 +51,6 @@ clients:
     type: яндекс
     url: mks.stophomelessness.ru
 
-  - name: Милосердие и забота
-    type: вк mcs0741818200
-    url: xn--j1adq.xn-----8kcaeogbuecc7am6akyq5a.xn--p1ai
-
   - name: ТЫ ДОМА
     type: вк mcs7451084416
     url: mks.td-samara.ru
