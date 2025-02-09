@@ -18,6 +18,9 @@ allowed_users:
   - dkramorov
   - Roman_Verkhovkii
 
+alerts:
+  check_period: 43000 # 12h
+
 clients:
   - name: ночлежка тест
     type: вк mcs0712976052

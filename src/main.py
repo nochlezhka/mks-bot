@@ -7,6 +7,7 @@ import telebot
 from threading import Thread
 
 from bot.bot import run as b_run
+from daemons.alerts import run as a_run
 
 from utils import config as cfg_utils
 
@@ -19,6 +20,9 @@ if __name__ == '__main__':
         logging.basicConfig(filename=log_name, level=logging.DEBUG)
     logging.basicConfig(level=logging.INFO)
     telebot.logger.setLevel(logging.INFO)
+
+    mks_alerts = Thread(target=a_run, args=(config,))
+    mks_alerts.start()
 
     telegram_bot_proccess = Thread(target=b_run, args=())
     telegram_bot_proccess.start()
