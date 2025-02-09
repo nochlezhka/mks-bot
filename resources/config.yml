@@ -19,7 +19,12 @@ allowed_users:
   - Roman_Verkhovkii
 
 alerts:
-  check_period: 43000 # 12h
+  check_period: 10800 # 3h
+  receivers:
+    - ""
+  thresholds:
+    resolved: 1
+    failed: 3
 
 clients:
   - name: ночлежка тест
