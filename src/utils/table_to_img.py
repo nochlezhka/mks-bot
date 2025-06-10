@@ -6,7 +6,7 @@ import io
 
 def render_mpl_table(columns, data, font_size=14,
                      header_color='#B4B4B3', row_colors=['#f1f1f2', 'w'], edge_color='w',
-                     bbox=[0, 0, 1.5, 1.5], header_columns=0,
+                     bbox=[0, 0, 2.2, 1.5], header_columns=0, col_widths=[0.35, 0.35, 0.3],
                      ax=None, **kwargs):
     mpl_table = ax.table(
         cellText=data, bbox=bbox,
