@@ -31,12 +31,11 @@ def render_mpl_table(columns, data, latest_version, font_size=14,
                 cell_data = data[k[0] - 1][k[1]]
                 version_pattern = r'(?:rc-)?\d{1,2}\.\d{1,2}\.\d{1,2}'
 
-                if cell_data == "fail":
+                if cell_data == "fail" or cell_data == "?":
                     cell.set_facecolor("#FFA8A8")
                 elif cell_data == "ok":
                     cell.set_facecolor("#B6FFCE")
-                elif (cell_data == "?" or
-                      (latest_version and re.fullmatch(version_pattern, cell_data) and cell_data != latest_version)):
+                elif latest_version and re.fullmatch(version_pattern, cell_data) and cell_data != latest_version:
                     cell.set_facecolor("#F6FFA4")
             except Exception as ex:
                 print(ex)
