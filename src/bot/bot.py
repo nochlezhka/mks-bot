@@ -11,7 +11,7 @@ from utils import table_to_img as tti
 
 sys.path.append('../resources/')
 config = cfg_utils.load("../resources/config.yml")
-latest_version = check.get_latest_version()
+latest_version = check.get_latest_version(config["github"]["token"])
 
 bot = telebot.TeleBot(config["telegram"]["token"])
 telebot.logger.setLevel(logging.INFO)

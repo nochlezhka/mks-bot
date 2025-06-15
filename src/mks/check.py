@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 import logging
-import os
 import requests
 import idna
 import json
 
-MKS_API_TOKEN = os.getenv("MKS_API_TOKEN")
 
-
-def get_latest_version() -> str:
+def get_latest_version(github_token: str) -> str:
     try:
         headers = {
             "Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {MKS_API_TOKEN}",
+            "Authorization": f"Bearer {github_token}",
             "X-GitHub-Api-Version": "2022-11-28",
         }
         resp = requests.get(f"https://api.github.com/repos/nochlezhka/mks/tags", headers=headers)
