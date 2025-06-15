@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     outputs:
       version: ${{ steps.set_version.outputs.safe_version }}
     steps:
@@ -55,7 +55,7 @@ jobs:
         run: echo ${{ steps.set_version.outputs.safe_version }}
 
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: build
     steps:
       - name: executing remote ssh commands using password
@@ -68,4 +68,4 @@ jobs:
           script: |
             docker ps
             docker rm -f mks-bot
-            docker run -d --name=mks-bot -e TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }} ${{ env.registry_url }}/${{ env.image_repo }}:${{ needs.build.outputs.version }}
+            docker run -d --name=mks-bot -e MKS_API_TOKEN=${{ secrets.MKS_API_TOKEN }} -e TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }} ${{ env.registry_url }}/${{ env.image_repo }}:${{ needs.build.outputs.version }}
