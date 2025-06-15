@@ -1,8 +1,35 @@
 # -*- coding: utf-8 -*-
 import logging
-
 import requests
 import idna
+import json
+
+
+def get_latest_version(github_token: str) -> str:
+    try:
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {github_token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+        resp = requests.get(f"https://api.github.com/repos/nochlezhka/mks/tags", headers=headers)
+        resp.raise_for_status()
+
+    except requests.exceptions.RequestException as ex:
+        logging.error(f"Failed to fetch tags page: {ex}")
+        return None
+
+    try:
+        content = json.loads(resp.content.decode("utf-8"))
+        return content[0].get("name").replace("/", "-") if len(content) != 0 else None
+
+    except UnicodeDecodeError as ex:
+        logging.error(f"Failed to decode response content: {ex}")
+        return None
+
+    except json.JSONDecodeError as ex:
+        logging.error(f"Failed to parse JSON: {ex}")
+        return None
 
 
 def get_short_status(clients, default_version_endpoint):
@@ -30,9 +57,9 @@ def get_short_status(clients, default_version_endpoint):
                 verify=False
             )
             response.raise_for_status()
-            version = response.text
+            version = response.text.strip()
 
-            version = (version[:8] + '..') if len(version) > 8 else version
+            version = (version[:12] + '..') if len(version) > 12 else version
         except Exception as ex:
             logging.error(ex)
             version = "?"
@@ -73,9 +100,9 @@ def get_long_status(clients, default_version_endpoint):
                 verify=False
             )
             response.raise_for_status()
-            version = response.text
+            version = response.text.strip()
 
-            version = (version[:8] + '..') if len(version) > 8 else version
+            version = (version[:12] + '..') if len(version) > 12 else version
         except Exception as ex:
             logging.error(ex)
             version = "?"
