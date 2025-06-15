@@ -1,33 +1,38 @@
 # -*- coding: utf-8 -*-
 import logging
-import re
+import os
 import requests
 import idna
+import json
+
+MKS_API_TOKEN = os.getenv("MKS_API_TOKEN")
 
 
 def get_latest_version() -> str:
     try:
-        resp = requests.get("https://github.com/nochlezhka/mks/tags", timeout=10)
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {MKS_API_TOKEN}",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+        resp = requests.get(f"https://api.github.com/repos/nochlezhka/mks/tags", headers=headers)
         resp.raise_for_status()
+
     except requests.exceptions.RequestException as ex:
         logging.error(f"Failed to fetch tags page: {ex}")
         return None
 
     try:
-        content = resp.content.decode("utf-8")
+        content = json.loads(resp.content.decode("utf-8"))
+        return content[0].get("name").replace("/", "-") if len(content) != 0 else None
+
     except UnicodeDecodeError as ex:
         logging.error(f"Failed to decode response content: {ex}")
         return None
 
-    pattern = r'(?:rc/)?\d{1,2}\.\d{1,2}\.\d{1,2}</a>'
-    versions = re.findall(pattern, content)
-    versions = [version.replace("</a>", "") for version in versions]
-
-    if not versions:
-        logging.error("No version strings found in HTML content.")
+    except json.JSONDecodeError as ex:
+        logging.error(f"Failed to parse JSON: {ex}")
         return None
-
-    return versions[0]
 
 
 def get_short_status(clients, default_version_endpoint):
