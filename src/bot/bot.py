@@ -11,6 +11,7 @@ from utils import table_to_img as tti
 
 sys.path.append('../resources/')
 config = cfg_utils.load("../resources/config.yml")
+latest_version = check.get_latest_version()
 
 bot = telebot.TeleBot(config["telegram"]["token"])
 telebot.logger.setLevel(logging.INFO)
@@ -120,7 +121,7 @@ def handler_text(message):
                 header, data = check.get_short_status(config["clients"], config["default_version_endpoint"])
                 bot.send_photo(
                     message.from_user.id,
-                    photo=tti.convert(header, data)
+                    photo=tti.convert(header, data, latest_version)
                 )
             except Exception as ex:
                 logging.error(ex)
@@ -136,7 +137,7 @@ def handler_text(message):
                 header, data = check.get_long_status(config["clients"], config["default_version_endpoint"])
                 bot.send_photo(
                     message.from_user.id,
-                    photo=tti.convert(header, data)
+                    photo=tti.convert(header, data, latest_version)
                 )
             except Exception as ex:
                 logging.error(ex)

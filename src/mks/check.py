@@ -1,8 +1,33 @@
 # -*- coding: utf-8 -*-
 import logging
-
+import re
 import requests
 import idna
+
+
+def get_latest_version() -> str:
+    try:
+        resp = requests.get("https://github.com/nochlezhka/mks/tags", timeout=10)
+        resp.raise_for_status()
+    except requests.exceptions.RequestException as ex:
+        logging.error(f"Failed to fetch tags page: {ex}")
+        return None
+
+    try:
+        content = resp.content.decode("utf-8")
+    except UnicodeDecodeError as ex:
+        logging.error(f"Failed to decode response content: {ex}")
+        return None
+
+    pattern = r'(?:rc/)?\d{1,2}\.\d{1,2}\.\d{1,2}</a>'
+    versions = re.findall(pattern, content)
+    versions = [version.replace("</a>", "") for version in versions]
+
+    if not versions:
+        logging.error("No version strings found in HTML content.")
+        return None
+
+    return versions[0]
 
 
 def get_short_status(clients, default_version_endpoint):
@@ -30,9 +55,9 @@ def get_short_status(clients, default_version_endpoint):
                 verify=False
             )
             response.raise_for_status()
-            version = response.text
+            version = response.text.strip()
 
-            version = (version[:8] + '..') if len(version) > 8 else version
+            version = (version[:12] + '..') if len(version) > 12 else version
         except Exception as ex:
             logging.error(ex)
             version = "?"
@@ -73,9 +98,9 @@ def get_long_status(clients, default_version_endpoint):
                 verify=False
             )
             response.raise_for_status()
-            version = response.text
+            version = response.text.strip()
 
-            version = (version[:8] + '..') if len(version) > 8 else version
+            version = (version[:12] + '..') if len(version) > 12 else version
         except Exception as ex:
             logging.error(ex)
             version = "?"
