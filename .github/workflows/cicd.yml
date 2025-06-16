@@ -1,4 +1,4 @@
-name: pipeline
+name: "CI/CD Pipeline"
 
 on:
   push:
@@ -13,6 +13,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     outputs:
       version: ${{ steps.set_version.outputs.safe_version }}
     steps:
@@ -37,9 +39,12 @@ jobs:
 
       - name: Set application version
         id: set_version
-        uses: kvendingoldo/semver-action@v1.10
+        uses: kvendingoldo/git-flow-action@v2.0.1
         with:
-          primary_branch: 'main'
+          enable_github_release: true
+          auto_release_branches: ""
+          tag_prefix_release: "v"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Build and push
         uses: docker/build-push-action@v3

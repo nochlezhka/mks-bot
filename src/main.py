@@ -5,9 +5,7 @@ import logging
 import telebot
 
 from threading import Thread
-
-from bot.bot import run as b_run
-
+from tgbot.bot import run as b_run
 from utils import config as cfg_utils
 
 if __name__ == '__main__':

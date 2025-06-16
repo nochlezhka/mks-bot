@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
+
 import matplotlib
 import six
 import matplotlib.pyplot as plt
 import io
 import re
 
-def render_mpl_table(columns, data, latest_version, font_size=14,
+
+def render_mpl_table(columns, data, latest_mks_version, colors, font_size=14,
                      header_color='#B4B4B3', row_colors=['#f1f1f2', 'w'], edge_color='w',
                      bbox=[0, 0, 1.5, 1.5], header_columns=0,
                      ax=None, **kwargs):
@@ -32,25 +35,30 @@ def render_mpl_table(columns, data, latest_version, font_size=14,
                 version_pattern = r'(?:rc-)?\d{1,2}\.\d{1,2}\.\d{1,2}'
 
                 if cell_data == "fail" or cell_data == "?":
-                    cell.set_facecolor("#FFA8A8")
+                    cell.set_facecolor(colors["red"])
                 elif cell_data == "ok":
-                    cell.set_facecolor("#B6FFCE")
-                elif latest_version and re.fullmatch(version_pattern, cell_data) and cell_data != latest_version:
-                    cell.set_facecolor("#F6FFA4")
+                    cell.set_facecolor(colors["green"])
+
+                elif latest_mks_version and re.fullmatch(version_pattern, cell_data):
+                    if cell_data != latest_mks_version:
+                        cell.set_facecolor(colors["yellow"])
+                    else:
+                        cell.set_facecolor(colors["green"])
+
             except Exception as ex:
                 print(ex)
 
     return ax
 
 
-def convert(header, data, latest_version):
+def convert(header, data, latest_mks_version, colors):
     matplotlib.pyplot.switch_backend('Agg')
 
     fig, ax = plt.subplots(figsize=(18, 6))
     ax.axis('tight')
     ax.axis('off')
 
-    ax = render_mpl_table(header, data, latest_version, ax=ax)
+    ax = render_mpl_table(header, data, latest_mks_version, colors, ax=ax)
 
     buffer = io.BytesIO()
 

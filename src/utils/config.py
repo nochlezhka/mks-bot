@@ -16,4 +16,9 @@ def load(yaml_path):
     if "LOG_DIR" in os.environ:
         config["log"]["dir"] = os.environ["LOG_DIR"]
 
+    if "MKS_API_TOKEN" in os.environ:
+        config["github"] = {
+            "token": os.environ["MKS_API_TOKEN"]
+        }
+
     return config

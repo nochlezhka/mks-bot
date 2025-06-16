@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+
 import logging
+import json
 import requests
 import idna
-import json
 
 
 def get_latest_version(github_token: str) -> str:
@@ -12,7 +13,7 @@ def get_latest_version(github_token: str) -> str:
             "Authorization": f"Bearer {github_token}",
             "X-GitHub-Api-Version": "2022-11-28",
         }
-        resp = requests.get(f"https://api.github.com/repos/nochlezhka/mks/tags", headers=headers)
+        resp = requests.get("https://api.github.com/repos/nochlezhka/mks/tags", headers=headers)
         resp.raise_for_status()
 
     except requests.exceptions.RequestException as ex:
