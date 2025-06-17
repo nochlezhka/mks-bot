@@ -43,14 +43,6 @@ clients:
     type: вк mcs7972760649
     url: mks.iznanka.info
 
-  - name: перспективы
-    type: яндекс
-    url: mks.perspektivy.ru
-
-  - name: маяк
-    type: яндекс
-    url: mks.stophomelessness.ru
-
   - name: ТЫ ДОМА
     type: вк mcs7451084416
     url: mks.td-samara.ru
@@ -58,6 +50,18 @@ clients:
   - name: Жить вместе
     type: вк mcs3416615957
     url: mks.zhitvmeste.ru
+
+  - name: перспективы
+    type: яндекс b1g45lnsetvmech979bb
+    url: mks.perspektivy.ru
+
+  - name: маяк
+    type: яндекс b1gjlq3h33jrubagi0sp
+    url: mks.stophomelessness.ru
+
+  - name: Анна Помогает
+    type: яндекс b1gn175pje1bs9a6lkdi
+    url: 46.21.246.10
 
 texts:
   messages:
