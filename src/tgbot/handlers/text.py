@@ -11,16 +11,12 @@ from utils import table_to_img as tti
 
 
 def register_handlers(bot: TeleBot, config):
-    latest_mks_version = check.get_latest_version(
-        config["github"]["token"]
-    )
-
     bot.register_message_handler(
-        partial(handler_text, config=config, latest_mks_version=latest_mks_version), content_types=['text'], pass_bot=True
+        partial(handler_text, config=config), content_types=['text'], pass_bot=True
     )
 
 
-def handler_text(message: Message, bot: TeleBot, config, latest_mks_version):
+def handler_text(message: Message, bot: TeleBot, config):
     if message.from_user.username not in config["allowed_users"]:
         try:
             msg = bot.send_message(
@@ -30,6 +26,10 @@ def handler_text(message: Message, bot: TeleBot, config, latest_mks_version):
         except Exception as ex:
             logging.error(ex)
     else:
+        latest_mks_version = check.get_latest_version(
+            config["github"]["token"]
+        )
+
         if message.text == 'показать короткий статус':
             try:
                 bot.send_message(
@@ -46,6 +46,10 @@ def handler_text(message: Message, bot: TeleBot, config, latest_mks_version):
                 logging.error(ex)
 
         if message.text == 'показать длинный статус':
+            latest_mks_version = check.get_latest_version(
+                config["github"]["token"]
+            )
+
             try:
                 bot.send_message(
                     message.from_user.id,
