@@ -1,5 +1,5 @@
 prettytable==3.16.0
-pytelegrambotapi==4.27.0
+pytelegrambotapi==4.28.0
 pyyaml==6.0.2
 loguru==0.7.3
 requests==2.32.4
