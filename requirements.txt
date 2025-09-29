@@ -1,6 +1,6 @@
 prettytable==3.16.0
 pytelegrambotapi==4.29.1
-pyyaml==6.0.2
+pyyaml==6.0.3
 loguru==0.7.3
 requests==2.32.5
 idna==3.10
