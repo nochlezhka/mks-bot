@@ -1,3 +1,8 @@
+## v0.40.0 - 2026-11-23
+### Miscellaneous
+- 8be2c2c Merge pull request [#36](https://github.com/nochlezhka/mks-bot/pull/36) from nochlezhka/dependabot/pip/matplotlib-3.10.8
+- 4115f14 build(deps): bump matplotlib from 3.10.7 to 3.10.8
+
 ## v0.39.0 - 2026-11-23
 ### Miscellaneous
 - d2a4806 Merge pull request [#39](https://github.com/nochlezhka/mks-bot/pull/39) from nochlezhka/dependabot/pip/pytelegrambotapi-4.31.0
