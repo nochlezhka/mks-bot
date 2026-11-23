@@ -1,3 +1,8 @@
+## v0.39.0 - 2026-11-23
+### Miscellaneous
+- d2a4806 Merge pull request [#39](https://github.com/nochlezhka/mks-bot/pull/39) from nochlezhka/dependabot/pip/pytelegrambotapi-4.31.0
+- 35d9e28 build(deps): bump pytelegrambotapi from 4.29.1 to 4.31.0
+
 ## v0.38.0 - 2026-11-23
 ### Chores
 - 6708c70 chore: trigger new release
