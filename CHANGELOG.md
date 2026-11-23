@@ -1,3 +1,7 @@
+## v0.38.0 - 2026-11-23
+### Chores
+- 6708c70 chore: trigger new release
+
 ## v0.36.0 - 2026-11-23
 ### Chores
 - 8fa16d7 chore: trigger new release
